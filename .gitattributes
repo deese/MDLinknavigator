@@ -1,0 +1,4 @@
+test-project/ export-ignore
+__pycache__/ export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore

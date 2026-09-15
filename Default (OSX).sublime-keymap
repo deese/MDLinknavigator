@@ -1,9 +1,4 @@
 [
-    {
-        "keys": ["super+enter"],
-        "command": "mdlinknavigator_follow",
-        "context": [
-            { "key": "selector", "operator": "equal", "operand": "text.html.markdown" }
-        ]
-    }
+    // Suggested binding — uncomment or change to your preference.
+    // { "keys": ["super+enter"], "command": "mdlinknavigator_follow", "context": [{ "key": "selector", "operator": "equal", "operand": "text.html.markdown" }] }
 ]
