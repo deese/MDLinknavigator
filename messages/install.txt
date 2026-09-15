@@ -1,0 +1,7 @@
+MDLink
+======
+
+Thanks for installing MDLink.
+
+Place the cursor inside an Obsidian-style wikilink such as [[note.md]] and press
+Ctrl+Enter (Windows/Linux) or Cmd+Enter (macOS) to open it.

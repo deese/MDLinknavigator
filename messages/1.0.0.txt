@@ -1,0 +1,9 @@
+MDLink 1.0.0
+============
+
+Initial release.
+
+- Follow Obsidian-style wikilinks [[note.md]] inside Markdown files.
+- Supports relative paths, aliases, and heading anchors.
+- Creates missing Markdown files automatically when configured.
+- Opens images, PDFs, and other non-Markdown files with the system application.

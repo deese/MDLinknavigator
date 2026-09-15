@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "MDLink: Follow Link",
+        "command": "mdlink_follow"
+    }
+]

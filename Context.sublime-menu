@@ -1,0 +1,9 @@
+[
+    {
+        "caption": "Follow Markdown Link",
+        "command": "mdlink_follow",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown" }
+        ]
+    }
+]

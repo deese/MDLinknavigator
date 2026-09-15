@@ -1,0 +1,7 @@
+{
+    "create_missing_files": true,
+    "new_file_template": "new note.md",
+    "follow_on_ctrl_click": true,
+    "link_resolution": "project_root",
+    "fallback_to_unique_name": true
+}
