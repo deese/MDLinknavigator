@@ -38,7 +38,8 @@ Open `Preferences > Package Settings > MDLink > Settings`.
 ```
 
 - `create_missing_files` – Create a missing Markdown file when following a link.
-- `new_file_template` – Text written to newly created Markdown files.
+- `new_file_template` – Text written to newly created Markdown files. Leave empty
+  to create blank files.
 - `follow_on_ctrl_click` – Follow a wikilink with Ctrl/Cmd+Click.
 - `link_resolution` – Strategy for resolving relative wikilinks.
 - `fallback_to_unique_name` – Search the whole project for a unique basename match

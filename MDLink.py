@@ -188,14 +188,15 @@ class MdlinkFollowCommand(sublime_plugin.TextCommand):
             sublime.status_message(f"MDLink: file not found {rel_path}")
             return
 
-        try:
-            os.makedirs(os.path.dirname(full_path), exist_ok=True)
-            template = settings.get("new_file_template", "new note.md")
-            with open(full_path, "w", encoding="utf-8") as file:
-                file.write(template)
-        except OSError as exc:
-            sublime.status_message(f"MDLink: could not create file: {exc}")
-            return
+            try:
+                os.makedirs(os.path.dirname(full_path), exist_ok=True)
+                template = settings.get("new_file_template", "")
+                with open(full_path, "w", encoding="utf-8") as file:
+                    if template:
+                        file.write(template)
+            except OSError as exc:
+                sublime.status_message(f"MDLink: could not create file: {exc}")
+                return
 
         self._open_markdown(full_path, anchor)
 
