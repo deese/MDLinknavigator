@@ -1,4 +1,4 @@
-"""MDLink - Follow Obsidian-style wikilinks inside Markdown files."""
+"""MDLinknavigator - Follow Obsidian-style wikilinks inside Markdown files."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from typing import Optional, Tuple
 import sublime
 import sublime_plugin
 
-SETTINGS_FILE = "MDLink.sublime-settings"
+SETTINGS_FILE = "MDLinknavigator.sublime-settings"
 WIKILINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
 
 
@@ -104,7 +104,7 @@ def _find_unique_matches(root: str, basename: str) -> list:
     return matches
 
 
-class MdlinkFollowCommand(sublime_plugin.TextCommand):
+class MdlinknavigatorFollowCommand(sublime_plugin.TextCommand):
     """Follow the Obsidian wikilink under the cursor."""
 
     def run(self, edit: Optional[sublime.Edit] = None) -> None:
@@ -112,7 +112,7 @@ class MdlinkFollowCommand(sublime_plugin.TextCommand):
         file_name = view.file_name()
 
         if not file_name or not file_name.lower().endswith(".md"):
-            sublime.status_message("MDLink: not a Markdown file")
+            sublime.status_message("MDLinknavigator: not a Markdown file")
             return
 
         link_region = None
@@ -122,19 +122,19 @@ class MdlinkFollowCommand(sublime_plugin.TextCommand):
                 break
 
         if not link_region:
-            sublime.status_message("MDLink: no wikilink under cursor")
+            sublime.status_message("MDLinknavigator: no wikilink under cursor")
             return
 
         raw = view.substr(link_region)[2:-2]
         rel_path, anchor = _parse_link(raw)
         if not rel_path:
-            sublime.status_message("MDLink: empty link")
+            sublime.status_message("MDLinknavigator: empty link")
             return
 
         rel_path = _normalize_path(rel_path)
         full_path = _resolve_link_path(view.window(), file_name, rel_path)
         if not full_path:
-            sublime.status_message("MDLink: cannot resolve link path")
+            sublime.status_message("MDLinknavigator: cannot resolve link path")
             return
 
         if full_path.lower().endswith(".md"):
@@ -185,18 +185,18 @@ class MdlinkFollowCommand(sublime_plugin.TextCommand):
                     return
 
         if not settings.get("create_missing_files", True):
-            sublime.status_message(f"MDLink: file not found {rel_path}")
+            sublime.status_message(f"MDLinknavigator: file not found {rel_path}")
             return
 
-            try:
-                os.makedirs(os.path.dirname(full_path), exist_ok=True)
-                template = settings.get("new_file_template", "")
-                with open(full_path, "w", encoding="utf-8") as file:
-                    if template:
-                        file.write(template)
-            except OSError as exc:
-                sublime.status_message(f"MDLink: could not create file: {exc}")
-                return
+        try:
+            os.makedirs(os.path.dirname(full_path), exist_ok=True)
+            template = settings.get("new_file_template", "")
+            with open(full_path, "w", encoding="utf-8") as file:
+                if template:
+                    file.write(template)
+        except OSError as exc:
+            sublime.status_message(f"MDLinknavigator: could not create file: {exc}")
+            return
 
         self._open_markdown(full_path, anchor)
 
@@ -225,13 +225,13 @@ class MdlinkFollowCommand(sublime_plugin.TextCommand):
     def _handle_non_markdown(self, full_path: str, rel_path: str) -> None:
         """Open non-Markdown files with the system default application."""
         if not os.path.exists(full_path):
-            sublime.status_message(f"MDLink: file not found {rel_path}")
+            sublime.status_message(f"MDLinknavigator: file not found {rel_path}")
             return
 
         try:
             _open_with_system(full_path)
         except OSError as exc:
-            sublime.status_message(f"MDLink: could not open file: {exc}")
+            sublime.status_message(f"MDLinknavigator: could not open file: {exc}")
 
     def _goto_anchor(self, view: sublime.View, anchor: str) -> None:
         """Move the cursor to the first heading matching the anchor."""
@@ -248,10 +248,10 @@ class MdlinkFollowCommand(sublime_plugin.TextCommand):
                 view.show(point)
                 return
 
-        sublime.status_message(f"MDLink: anchor #{anchor} not found")
+        sublime.status_message(f"MDLinknavigator: anchor #{anchor} not found")
 
 
-class MdlinkClickListener(sublime_plugin.EventListener):
+class MdlinknavigatorClickListener(sublime_plugin.EventListener):
     """Intercept Ctrl/Cmd+Click on wikilinks and follow them."""
 
     def on_text_command(
@@ -281,6 +281,6 @@ class MdlinkClickListener(sublime_plugin.EventListener):
 
         for region in view.find_all(WIKILINK_RE.pattern):
             if region.contains(point):
-                return ("mdlink_follow", None)
+                return ("mdlinknavigator_follow", None)
 
         return None

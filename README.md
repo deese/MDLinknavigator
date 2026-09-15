@@ -1,4 +1,4 @@
-# MDLink
+# MDLinknavigator
 
 A Sublime Text 4 plugin that lets you follow Obsidian-style wikilinks inside
 Markdown files.
@@ -23,16 +23,16 @@ Place the cursor inside a wikilink and press:
 
 **Ctrl+Click** (Windows/Linux) or **Cmd+Click** (macOS) a wikilink to follow it.
 You can also right-click and select **Follow Markdown Link**, or use the Command
-Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run **MDLink: Follow Link**.
+Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run **MDLinknavigator: Follow Link**.
 
 ## Settings
 
-Open `Preferences > Package Settings > MDLink > Settings`.
+Open `Preferences > Package Settings > MDLinknavigator > Settings`.
 
 ```json
 {
     "create_missing_files": true,
-    "new_file_template": "new note.md",
+    "new_file_template": "",
     "follow_on_ctrl_click": true
 }
 ```

@@ -1,4 +1,4 @@
-MDLink 1.0.0
+MDLinknavigator 1.0.0
 ============
 
 Initial release.

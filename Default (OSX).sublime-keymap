@@ -1,7 +1,7 @@
 [
     {
         "keys": ["super+enter"],
-        "command": "mdlink_follow",
+        "command": "mdlinknavigator_follow",
         "context": [
             { "key": "selector", "operator": "equal", "operand": "text.html.markdown" }
         ]

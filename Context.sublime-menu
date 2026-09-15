@@ -1,7 +1,7 @@
 [
     {
         "caption": "Follow Markdown Link",
-        "command": "mdlink_follow",
+        "command": "mdlinknavigator_follow",
         "context": [
             { "key": "selector", "operator": "equal", "operand": "text.html.markdown" }
         ]
