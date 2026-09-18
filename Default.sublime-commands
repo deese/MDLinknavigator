@@ -2,5 +2,12 @@
     {
         "caption": "MDLinknavigator: Follow Link",
         "command": "mdlinknavigator_follow"
+    },
+    {
+        "caption": "Preferences: MDLinknavigator Settings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/MDLinknavigator/MDLinknavigator.sublime-settings"
+        }
     }
 ]

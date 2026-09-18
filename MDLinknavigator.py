@@ -84,14 +84,26 @@ def _normalize_path(path: str) -> str:
     return path
 
 
+def _hidden_startupinfo() -> Optional[subprocess.STARTUPINFO]:
+    """Return STARTUPINFO that suppresses console window flashing on Windows."""
+    if sys.platform != "win32":
+        return None
+    startupinfo = subprocess.STARTUPINFO()
+    startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+    startupinfo.wShowWindow = subprocess.SW_HIDE
+    return startupinfo
+
+
 def _open_with_system(path: str) -> None:
     """Open a non-Markdown file with the default system application."""
     if sys.platform == "win32":
         os.startfile(path)  # type: ignore[attr-defined]
     elif sys.platform == "darwin":
-        subprocess.run(["open", path], check=False)
+        subprocess.run(["open", path], check=False, startupinfo=_hidden_startupinfo())
     else:
-        subprocess.run(["xdg-open", path], check=False)
+        subprocess.run(
+            ["xdg-open", path], check=False, startupinfo=_hidden_startupinfo()
+        )
 
 
 def _find_unique_matches(root: str, basename: str) -> list:
