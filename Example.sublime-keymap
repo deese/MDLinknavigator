@@ -1,0 +1,5 @@
+[
+	// Uncomment the binding below to follow wikilinks with Ctrl+Enter (Windows/Linux)
+	// or Cmd+Enter (macOS). Adjust the key to avoid conflicts with other packages.
+	// { "keys": ["ctrl+enter"], "command": "mdlinknavigator_follow" }
+]
