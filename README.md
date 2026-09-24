@@ -16,6 +16,8 @@ Markdown files.
 
 ## Usage
 
+The plugin only activates in `.md` files.
+
 Place the cursor inside a wikilink and invoke the command via:
 
 - **Command Palette** (`Ctrl+Shift+P` / `Cmd+Shift+P`): run **MDLinknavigator: Follow Link**
@@ -24,10 +26,10 @@ Place the cursor inside a wikilink and invoke the command via:
 
 ### Key bindings
 
-The keymap files ship with suggested bindings commented out to avoid conflicts
-with other packages. To enable them, open
-`Preferences > Package Settings > MDLinknavigator > Key Bindings` and uncomment
-the binding for your platform (`Ctrl+Enter` on Windows/Linux, `Cmd+Enter` on macOS).
+No keyboard shortcut is active by default to avoid conflicts with other packages.
+To add one, open `Preferences > Package Settings > MDLinknavigator > Key Bindings`,
+copy the example binding from the left pane into the right pane, and uncomment it.
+The suggested shortcut is `Ctrl+Enter` on Windows/Linux and `Cmd+Enter` on macOS.
 
 ## Settings
 
